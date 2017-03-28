@@ -28,7 +28,20 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  let top = array.length -1, half = 0, bottom = 0;
 
+  while(bottom <= top) {
+    half = Math.floor((top + bottom) / 2);
+    if(search < array[half]) {
+      top = half - 1;
+    } else if (search > array[half]) {
+      bottom = half + 1;
+    } else if (search !== array[half]) {
+      return -1;
+    } else {
+      return half;
+    }
+  }
 }
 
 // Driver code
