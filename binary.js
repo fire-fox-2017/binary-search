@@ -28,7 +28,30 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  let mid = 0
+  let left = 0;
+  let right = array.length - 1;
 
+  let result = -1;
+
+  // the left and right index must not overlap
+  while (left <= right) {
+    mid = Math.floor((left + right) /2);
+
+    if(array[mid] == search){
+      // found the index, break from the loop
+      result = mid;
+      break;
+    } else if (array[mid] < search) {
+      // go to right half
+      left = mid + 1;
+    }else if (array[mid] > search) {
+      // go to left half
+      right = mid - 1;
+    }
+  }
+
+  return result;
 }
 
 // Driver code
@@ -39,6 +62,10 @@ console.log(binary_search(2, test_array_genap))
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
+
+console.log(binary_search(11, test_array_genap))
+console.log(binary_search(0, test_array_ganjil))
+
 
 module.exports = {
   binary_search
