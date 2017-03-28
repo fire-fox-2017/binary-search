@@ -26,10 +26,58 @@ PSEUDOCODE
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+//Release 0
+
+// function binary_search (search, array) {
+//   // Your code here
+
+//   let indeksAwal = 0;
+//   let indeksAkhir = array.length-1;
+//   let indeksTengah;
+//   let nilaiArr;
+
+//   while(indeksAwal <= indeksAkhir){
+//     indeksTengah = Math.floor((indeksAkhir + indeksAwal)/2);
+//     nilaiArr = array[indeksTengah];
+
+//     if(nilaiArr < search){
+//       indeksAwal += 1;
+//     } else if (nilaiArr > search){
+//       indeksAkhir -= 1;
+//     } else {
+//       return true;
+//     }
+
+//   }
+
+// }
+
+
+//Release 1
 function binary_search (search, array) {
   // Your code here
 
+  let indeksAwal = 0;
+  let indeksAkhir = array.length-1;
+  let indeksTengah;
+  let nilaiArr;
+
+  while(indeksAwal <= indeksAkhir){
+    indeksTengah = Math.floor((indeksAkhir + indeksAwal)/2);
+    nilaiArr = array[indeksTengah];
+
+    if(nilaiArr < search){
+      indeksAwal += 1;
+    } else if (nilaiArr > search){
+      indeksAkhir -= 1;
+    } else {
+      return indeksTengah;
+    }
+
+  }
+
 }
+
 
 // Driver code
 console.log(binary_search(5, test_array_genap))
