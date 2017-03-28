@@ -28,7 +28,21 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  let panjang = array.length
+  let batasPencarian = 0
 
+  while(batasPencarian <= panjang) {
+    let mid = Math.floor((panjang+batasPencarian)/2)
+    if(search == array[mid]) {
+      return mid
+    } else
+    if (search < array[mid]) {
+      panjang = mid -1
+    } else {
+      batasPencarian = mid +1
+    }
+  }
+  return -1
 }
 
 // Driver code
@@ -39,6 +53,13 @@ console.log(binary_search(2, test_array_genap))
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
+
+let test_array = [1, 2, 3, 4, 5]
+console.log(binary_search(3, test_array) === 2)// true
+test_array = [13, 19, 24, 29, 32, 37, 43]
+console.log(binary_search(35, test_array) === -1)// true
+test_array = [100, 120, 130, 135, 150, 170]
+console.log(binary_search(135, test_array) === 3)// true
 
 module.exports = {
   binary_search
