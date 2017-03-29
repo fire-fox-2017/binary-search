@@ -28,10 +28,28 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  var sortedArray = array.sort(function(a,b) {
+    return a - b;
+  });
+  var target = search;
+  var lowIndex = 0;
+  var highIndex = (sortedArray.length)-1;
 
+  while (lowIndex <= highIndex) {
+    var mid = Math.floor((lowIndex + highIndex)/2);
+    if(sortedArray[mid] < target) {
+      lowIndex = mid + 1;
+    } else if (sortedArray[mid] > target) {
+      highIndex = mid - 1;
+    } else {
+      return mid;
+    }
+  }
+
+  return -1;
 }
 
-// Driver code
+// Release 1: Driver code
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))
 console.log(binary_search(2, test_array_genap))
@@ -39,6 +57,16 @@ console.log(binary_search(2, test_array_genap))
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
+
+//Release 0: Ensuring accuracy
+var test_array = [1,2,3,4,5];
+console.log(binary_search(3, test_array) === 2);
+var test_array = [13,19,24,29,32,37,43];
+console.log(binary_search(35, test_array) === -1);
+var test_array = [100,120,130,135,150,170];
+console.log(binary_search(135, test_array) === 3);
+
+
 
 module.exports = {
   binary_search
