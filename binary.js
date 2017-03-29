@@ -26,13 +26,26 @@ PSEUDOCODE
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search (search, array) {
-  // Your code here
-
+function binary_search(search, array) {
+    // Your code here
+    var low = 0
+    var high = array.length - 1; //ge=9 ga=10
+    while (low <= high) {
+        let indexMid = Math.floor((high + low) / 2); //4,
+        // console.log(indexMid);
+        if (search < array[indexMid]) {
+            high = indexMid - 1;
+        } else if (search > array[indexMid]) {
+            low = indexMid + 1;
+        } else {
+          return indexMid;
+        }
+    }
+    return -1
 }
 
 // Driver code
-console.log(binary_search(5, test_array_genap))
+console.log(binary_search(5, test_array_genap) === 4)
 console.log(binary_search(10, test_array_genap))
 console.log(binary_search(2, test_array_genap))
 
@@ -41,5 +54,5 @@ console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
 
 module.exports = {
-  binary_search
+    binary_search
 }
