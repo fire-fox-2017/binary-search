@@ -28,6 +28,22 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  var kiri=0;
+  var kanan=array.length-1;
+  var tengah=0;
+
+  while(kiri<=kanan){
+    tengah = Math.floor((kiri+kanan)/2);
+
+    if(search===array[tengah]){
+      return tengah;
+    }else if (search>array[tengah]) {
+      kiri = tengah + 1;
+    }else if (search<array[tengah]){
+      kanan = tengah - 1;
+    }
+  }
+  return "Angka yang dicari tidak ada";
 
 }
 
@@ -39,6 +55,7 @@ console.log(binary_search(2, test_array_genap))
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
+
 
 module.exports = {
   binary_search
