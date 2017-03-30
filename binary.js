@@ -26,9 +26,27 @@ PSEUDOCODE
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search (search, array) {
-  // Your code here
+function binary_search (targetValue, array) {
+  let min = 0;
+   let max = array.length - 1;
+   let indexTengah;
 
+   while(min <= max){
+      indexTengah = Math.floor((min + max) /2);
+
+      if(array[indexTengah] == targetValue){
+        return `${targetValue} ada di indeks ke ${indexTengah}`
+      }
+
+      else if(array[indexTengah] < targetValue){
+        min = indexTengah + 1;
+      }
+
+      else {
+        max = indexTengah - 1;
+      }
+   }
+   return -1;
 }
 
 // Driver code
