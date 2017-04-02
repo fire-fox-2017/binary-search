@@ -27,8 +27,52 @@ var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
-  // Your code here
+  /*
+  // src https://oli.me.uk//2013/06/08/searching-javascript-arrays-with-a-binary-search/
+  let max_index = array.length + 1;
+  let min_index = 1;
+  let mid_index = if (max_index%2 === 0){
+    return array.length/2;
+  } else {
+    return Math.round(array.length/2);
+  }
+  let target = for (let i = 0; i < array.length ; i++){
+    if (values[i] === target){
+      return i;
+    }
+  }
 
+  for (let j = 0; j < max_index; j++){
+    if (search == mid_index){
+      return mid_index
+    } else if (i < mid_index){
+      arr.splice(mid_index,max_index - 1);
+    } else {
+      arr.splice(min_index - 1,mid_index);
+    }
+  }
+  return*/
+
+  var minIndex = 0;
+  var maxIndex = array.length - 1;
+  var currentIndex;
+  var currentElement;
+
+  while (minIndex <= maxIndex) {
+    currentIndex = (minIndex + maxIndex) / 2 | 0;
+    currentElement = array[currentIndex];
+
+    if (currentElement < search) {
+        minIndex = currentIndex + 1;
+    }
+    else if (currentElement > search) {
+        maxIndex = currentIndex - 1;
+    }
+    else {
+        return currentIndex;
+    }
+  }
+  return -1;
 }
 
 // Driver code
