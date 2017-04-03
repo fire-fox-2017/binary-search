@@ -28,27 +28,23 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
-  var awal=array[0];
-  var akhir=array[array.length-1];
-  var tengah=Math.floor(akhir/2)
-  if(search>tengah)
+  var awal=0;
+  var akhir=array.length-1;
+  var tengah=Math.floor((awal+akhir)/2)
+  while(awal<=akhir){
+    if(search>array[tengah])
     {
-      for(let i=tengah; i<=akhir;i++)
-        {
-          if(i===search)
-            return i-1;
-        }
+      awal=tengah+1;
+      tengah=Math.floor((awal+akhir)/2)
     }
-  else if(search<tengah)
+    else if(search<array[tengah])
     {
-      for(let i=awal;i<=tengah;i++)
-        {
-          if(i===search)
-          return i-1;
-        }
+      akhir=tengah-1;
+      tengah=Math.floor((awal+akhir)/2)
     }
-   else
-     return search-1;
+    else return tengah;
+  }
+
   return -1;
 }
 
@@ -56,7 +52,6 @@ function binary_search (search, array) {
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))
 console.log(binary_search(2, test_array_genap))
-
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
