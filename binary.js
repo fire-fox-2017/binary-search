@@ -28,14 +28,30 @@ var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  var awal=0;
+  var akhir=array.length-1;
+  var tengah=Math.floor((awal+akhir)/2)
+  while(awal<=akhir){
+    if(search>array[tengah])
+    {
+      awal=tengah+1;
+      tengah=Math.floor((awal+akhir)/2)
+    }
+    else if(search<array[tengah])
+    {
+      akhir=tengah-1;
+      tengah=Math.floor((awal+akhir)/2)
+    }
+    else return tengah;
+  }
 
+  return -1;
 }
 
 // Driver code
 console.log(binary_search(5, test_array_genap))
 console.log(binary_search(10, test_array_genap))
 console.log(binary_search(2, test_array_genap))
-
 console.log(binary_search(6, test_array_ganjil))
 console.log(binary_search(11, test_array_ganjil))
 console.log(binary_search(2, test_array_ganjil))
