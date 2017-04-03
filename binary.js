@@ -24,11 +24,27 @@ PSEUDOCODE
 'use strict'
 
 var test_array_genap = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// console.log(test_array_genap.length);
 var test_array_ganjil = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search (search, array) {
   // Your code here
+  var lowIdx = 0, highIndx = array.length - 1, midIndx;
 
+while (lowIdx <= highIndx){
+  midIndx = lowIdx + (highIndx - lowIdx) / 2 ;
+  if ((midIndx % 1)  >  0){
+    midIndx = Math.ceil(midIndx);
+  }
+  if (search < array[midIndx]) {
+    highIndx = midIndx-1;
+  }else if(search > array[midIndx]){
+    lowIdx = midIndx + 1;
+  }else {
+    return midIndx;
+  }
+}
+return -1;
 }
 
 // Driver code
